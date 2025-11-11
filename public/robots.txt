@@ -1,0 +1,9 @@
+# robots.txt for T-Rage Studios
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tragestudios.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
