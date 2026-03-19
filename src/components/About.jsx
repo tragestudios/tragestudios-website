@@ -46,7 +46,7 @@ const About = () => {
           </h2>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
             T-Rage Studios, tutkulu bir ekiple oyun ve yazılım geliştirme alanında
-            yenilikçi çözümler sunan bir stüdyodur. 2020'den beri sektörde aktif
+            yenilikçi çözümler sunan bir stüdyodur. 2023'den beri sektörde aktif
             olarak hizmet vermekteyiz.
           </p>
         </motion.div>
