@@ -129,4 +129,4 @@ Renk temasını değiştirmek için `tailwind.config.js` dosyasındaki `primary`
 
 ## Lisans
 
-© 2024 T-Rage Studios. Tüm hakları saklıdır.
+© 2023 T-Rage Studios. Tüm hakları saklıdır.
