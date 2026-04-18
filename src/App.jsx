@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { initTracker } from './tracker'
 import Hero from './components/Hero'
 import About from './components/About'
 import Games from './components/Games'
@@ -9,6 +10,10 @@ import ParticleBackground from './components/ParticleBackground'
 
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    initTracker()
+  }, [])
 
   useEffect(() => {
     const handleMouseMove = (e) => {
