@@ -62,6 +62,14 @@ app.post('/api/track', async (req, res) => {
 
   try {
     const pool = await getPool()
+
+    // Auto-register project if not exists
+    await pool.request()
+      .input('name',   sql.NVarChar(100), project)
+      .input('domain', sql.NVarChar(300), process.env.PROJECT_DOMAIN || null)
+      .query(`IF NOT EXISTS (SELECT 1 FROM projects WHERE name = @name)
+                INSERT INTO projects (name, domain) VALUES (@name, @domain)`)
+
     await pool.request()
       .input('project',    sql.NVarChar(100),      project)
       .input('event_type', sql.NVarChar(100),      event_type)

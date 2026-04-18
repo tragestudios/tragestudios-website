@@ -10,6 +10,7 @@ services:
     env_file: .env
     networks:
       - tragestudios-network
+      - tragestudios-net
 
   tragestudios-web:
     build:
@@ -32,3 +33,5 @@ services:
 networks:
   tragestudios-network:
     driver: bridge
+  tragestudios-net:
+    external: true
