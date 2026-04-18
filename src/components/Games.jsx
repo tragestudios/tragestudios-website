@@ -1,34 +1,37 @@
 import { motion } from 'framer-motion'
-import { Gamepad2, Trophy, Users, Zap } from 'lucide-react'
+import { Gamepad2, Clipboard, Wrench, Users, Monitor, Smartphone } from 'lucide-react'
 
 const Games = () => {
   const games = [
     {
-      title: 'Cyber Legends',
-      description: 'Gelecekte geçen aksiyon dolu bir RPG macerası',
-      image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&h=600&fit=crop',
-      category: 'RPG',
-      players: '1-4 Oyuncu',
-      status: 'Yakında',
+      title: 'CMMS',
+      description: 'İba Valresa A.Ş. için geliştirilmiş, aktif kullanımda olan bilgisayar destekli bakım yönetimi web uygulaması.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop',
+      category: 'Web Uygulaması',
+      platform: 'Web',
+      status: 'Yayında',
+      statusColor: 'bg-green-500/90',
+      icon: Wrench,
+    },
+    {
+      title: 'Hidden Pairs',
+      description: 'Hafızanı test et! Kartları eşleştirerek zihni güçlendiren klasik kart eşleştirme oyunu.',
+      image: 'https://images.unsplash.com/photo-1606503153255-59d8b8b82176?w=800&h=600&fit=crop',
+      category: 'Oyun',
+      platform: '1-4 Oyuncu',
+      status: 'Geliştiriliyor',
+      statusColor: 'bg-yellow-500/90',
       icon: Gamepad2,
     },
     {
-      title: 'Racing Evolution',
-      description: 'Gerçekçi fizik motoruyla ultimate yarış deneyimi',
-      image: 'https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&h=600&fit=crop',
-      category: 'Racing',
-      players: 'Multiplayer',
-      status: 'Beta',
-      icon: Zap,
-    },
-    {
-      title: 'Kingdom Builder',
-      description: 'Kendi krallığınızı kurun ve yönetin',
-      image: 'https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=800&h=600&fit=crop',
-      category: 'Strategy',
-      players: 'Single Player',
+      title: 'Online Clipboard',
+      description: 'Cihazlar arası anlık senkronize pano. Kopyaladığın içerik web ve mobil arasında anında paylaşılır.',
+      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop',
+      category: 'Web & Mobil',
+      platform: 'Web + Mobil',
       status: 'Geliştiriliyor',
-      icon: Trophy,
+      statusColor: 'bg-yellow-500/90',
+      icon: Clipboard,
     },
   ]
 
@@ -63,10 +66,10 @@ const Games = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient">Oyunlarımız</span>
+            <span className="text-gradient">Projelerimiz</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Farklı türlerde, unutulmaz deneyimler sunan oyunlarımızı keşfedin
+            Web, mobil ve oyun alanında geliştirdiğimiz projeleri keşfedin
           </p>
         </motion.div>
 
@@ -96,7 +99,7 @@ const Games = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 
                   {/* Status Badge */}
-                  <div className="absolute top-4 right-4 bg-primary-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold">
+                  <div className={`absolute top-4 right-4 ${game.statusColor} backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold`}>
                     {game.status}
                   </div>
 
@@ -121,8 +124,8 @@ const Games = () => {
                   <p className="text-gray-400 mb-4">{game.description}</p>
 
                   <div className="flex items-center text-sm text-gray-500">
-                    <Users className="w-4 h-4 mr-2" />
-                    {game.players}
+                    <Monitor className="w-4 h-4 mr-2" />
+                    {game.platform}
                   </div>
 
                   <motion.button

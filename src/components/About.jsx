@@ -27,7 +27,7 @@ const About = () => {
 
   const stats = [
     { value: '50+', label: 'Proje Tamamlandı' },
-    { value: '10+', label: 'Aktif Oyun' },
+    { value: '10+', label: 'Geliştirilen Oyun' },
     { value: '1M+', label: 'Mutlu Oyuncu' },
     { value: '25+', label: 'Takım Üyesi' },
   ]

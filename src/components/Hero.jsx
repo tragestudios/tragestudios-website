@@ -57,7 +57,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="relative z-10">Oyunlarımızı Keşfedin</span>
+              <span className="relative z-10">Projelerimizi Keşfedin</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-400 opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.a>
 
