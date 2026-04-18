@@ -1,6 +1,16 @@
 version: '3.8'
 
 services:
+  tragestudios-api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: tragestudios-api
+    restart: unless-stopped
+    env_file: .env
+    networks:
+      - tragestudios-network
+
   tragestudios-web:
     build:
       context: .

@@ -9,13 +9,32 @@ const Contact = () => {
     subject: '',
     message: '',
   })
+  const [status, setStatus] = useState(null)
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-    alert('Mesajınız alındı! En kısa sürede size dönüş yapacağız.')
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    setLoading(true)
+    setStatus(null)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (res.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleChange = (e) => {
@@ -204,14 +223,22 @@ const Contact = () => {
                 />
               </div>
 
+              {status === 'success' && (
+                <p className="text-green-400 text-sm text-center">Mesajınız alındı! En kısa sürede dönüş yapacağız.</p>
+              )}
+              {status === 'error' && (
+                <p className="text-red-400 text-sm text-center">Bir hata oluştu. Lütfen tekrar deneyin.</p>
+              )}
+
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-4 bg-primary-500 hover:bg-primary-600 rounded-lg font-semibold flex items-center justify-center space-x-2 transition-colors group"
+                disabled={loading}
+                whileHover={{ scale: loading ? 1 : 1.02 }}
+                whileTap={{ scale: loading ? 1 : 0.98 }}
+                className="w-full py-4 bg-primary-500 hover:bg-primary-600 disabled:opacity-60 disabled:cursor-not-allowed rounded-lg font-semibold flex items-center justify-center space-x-2 transition-colors group"
               >
-                <span>Mesaj Gönder</span>
-                <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <span>{loading ? 'Gönderiliyor...' : 'Mesaj Gönder'}</span>
+                {!loading && <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
               </motion.button>
             </form>
           </motion.div>
